@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const ViewHabits = ({ setHabitToEdit }) => {
   const [habits, setHabits] = useState([]);
-  const baseUrl = `${import.meta.env.VITE_API_URL}/habitapi`;
+  const baseUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const ViewHabits = ({ setHabitToEdit }) => {
                 <th>Title</th>
                 <th>Description</th>
                 <th>Frequency</th>
-                <th>Created At</th>
+                <th>Is Good?</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -47,11 +47,11 @@ const ViewHabits = ({ setHabitToEdit }) => {
               {habits.map((h) => (
                 <tr key={h.id}>
                   <td>{h.id}</td>
-                  <td>{h.user_id}</td>
+                  <td>{h.userId}</td>
                   <td>{h.title}</td>
                   <td>{h.description}</td>
                   <td>{h.frequency}</td>
-                  <td>{h.created_at}</td>
+                  <td>{h.isGood ? 'Yes' : 'No'}</td>
                   <td>
                     <button className="btn-green" onClick={() => editHabit(h)}>Edit</button>
                     <button className="btn-red" onClick={() => deleteHabit(h.id)}>Delete</button>

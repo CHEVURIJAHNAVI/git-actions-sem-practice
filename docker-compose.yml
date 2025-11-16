@@ -14,7 +14,7 @@ services:
  
   backend:
     image: chevurijahnavi/docker-backend-sem-practice:latest
-    container_name: springboot
+    container_name: springboot2
     ports:
       - "2026:2001"
     depends_on:
@@ -25,12 +25,14 @@ services:
 
   frontend:
     image: chevurijahnavi/docker-frontend-sem-practice:latest
-    container_name: react
+    container_name: react2
     ports:
       - "3000:80"
     depends_on:
       - backend
     restart: on-failure
+    environment:
+      - VITE_API_URL=http://backend:2001/habitapi
     networks:
       - springboot-mysql-net
 

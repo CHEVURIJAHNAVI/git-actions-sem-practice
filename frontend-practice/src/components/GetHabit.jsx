@@ -4,7 +4,7 @@ import axios from "axios";
 const GetHabit = () => {
   const [id, setId] = useState("");
   const [habit, setHabit] = useState(null);
-  const baseUrl = `${import.meta.env.VITE_API_URL}/habitapi`;
+  const baseUrl = import.meta.env.VITE_API_URL;
 
   const fetchHabit = async () => {
     try {
